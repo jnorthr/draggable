@@ -1,0 +1,21 @@
+{% macro render(heading, options = {}) %}
+  {% set classes = ['Block'] %}
+  {% set classes = (classes.push('Block--item' + options.index) if options.index, classes) %}
+  {% set classes = (classes.push('Block--isDraggable') if options.draggable, classes) %}
+  {% set classes = (classes.push(options.classes | join(' ')) if options.classes, classes) %}
+  {% set classes = classes | join(' ') | trim %}
+
+  {% if options.draggable %}
+    {% set openingTag = '<a href="#" class="' + classes + '" title="Click to drag">' %}
+    {% set closingTag = '</a>' %}
+  {% else %}
+    {% set openingTag = '<span class="' + classes + '">' %}
+    {% set closingTag = '</span>' %}
+  {% endif %}
+
+  {{ openingTag | safe }}
+    <div class="BlockContent">
+      <h3 class="Heading Heading--size2">{{ heading }}</h3>
+    </div>
+  {{ closingTag | safe }}
+{% endmacro %}

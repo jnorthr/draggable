@@ -1,0 +1,35 @@
+{
+  "NavItems": [
+    {
+      "Draggable": [
+        "Basic dragging",
+        "Positioned layout"
+      ]
+    },
+    {
+      "Droppable": [
+        "One and only",
+        "Capacity"
+      ]
+    },
+    {
+      "Sortable": [
+        "Simple list",
+        "Multiple containers"
+      ]
+    },
+    {
+      "Swappable": [
+        "Floated layout",
+        "Grid layout"
+      ]
+    },
+    {
+      "Plugins": [
+        "Collidable",
+        "Snappable",
+        "SwapAnimation"
+      ]
+    }
+  ]
+}

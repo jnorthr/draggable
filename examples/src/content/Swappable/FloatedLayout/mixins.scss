@@ -1,0 +1,21 @@
+////
+/// Components
+/// Examples Float mixins
+////
+
+// explain this, SassDocs style!
+@mixin float-children($nth-children...) {
+  $selector-chain: ();
+
+  @each $child in $nth-children {
+    $child-selector: unquote('.Block:nth-child(#{$child})');
+    $adjacent-clone-selector: unquote('.Block--isCloned ~ .Block:nth-child(#{$child + 1})');
+
+    $selector-chain: append($selector-chain, $child-selector, comma);
+    $selector-chain: append($selector-chain, $adjacent-clone-selector, comma);
+  }
+
+  #{$selector-chain} {
+    @content;
+  }
+}

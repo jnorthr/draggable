@@ -1,0 +1,37 @@
+////
+/// Components
+/// BlockLayout
+////
+
+@import '../../styles/utilities/layout';
+
+.BlockLayout--typeFlex {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -#{get-layout-length(gutter)};
+  margin-left: -#{get-layout-length(gutter)};
+
+  .Block {
+    flex: 1 1 100%;
+    padding-top: get-layout-length(gutter);
+    padding-left: get-layout-length(gutter);
+  }
+}
+
+.BlockLayout--typeFloat {
+  @include clearfix;
+  margin-top: -#{get-layout-length(gutter)};
+  margin-left: -#{get-layout-length(gutter)};
+
+  .Block {
+    float: left;
+    padding-top: get-layout-length(gutter);
+    padding-left: get-layout-length(gutter);
+    width: 100%;
+  }
+}
+
+.BlockLayout--typeGrid {
+  display: grid;
+  grid-gap: get-layout-length(gutter);
+}
