@@ -1,10 +1,12 @@
 ////
-/// Components
-/// Examples Float mixins
+/// Content
+/// Floated Layout mixins
 ////
 
-// explain this, SassDocs style!
-@mixin float-children($nth-children...) {
+/// Generate a selector chain for Swappable Block layouts
+/// @param {ArgList} $nth-children - Any number of numeric values
+/// eg: (1, 2, 5, 7, 8, 9)
+@mixin floated-layout-selectors($nth-children...) {
   $selector-chain: ();
 
   @each $child in $nth-children {

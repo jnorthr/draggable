@@ -1,8 +1,7 @@
 import {Draggable} from '../../scripts/vendor/draggable';
 
 export default function Home() {
-  const containerSelector = '.Example--pageHome';
-  const containers = document.querySelectorAll(containerSelector);
+  const containers = document.querySelectorAll('.Home');
   const draggable = new Draggable(containers, {
     draggable: '.Block--isDraggable',
     appendTo: source => source.parentNode,

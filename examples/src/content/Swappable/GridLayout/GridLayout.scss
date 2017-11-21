@@ -1,6 +1,6 @@
 ////
-/// Components
-/// Examples: Grid Layout
+/// Content
+/// Grid Layout
 ////
 
 $grid-area-names: a, b, c, d, e, f, g;
@@ -8,7 +8,7 @@ $grid-rows: 5;
 $grid-columns: 5;
 $grid-columns-tablet: 8;
 
-.Example--pageGrid {
+.GridLayout {
   .BlockLayout--typeGrid {
     grid-template-rows: repeat($grid-rows, columns());
     grid-template-columns: repeat(

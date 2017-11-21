@@ -4,8 +4,10 @@
 {% import 'components/Sidebar/Sidebar.html' as Sidebar %}
 {% import 'components/PageHeader/PageHeader.html' as PageHeader %}
 
+{% import 'content/Swappable/GridLayout/GridLayout.html' as GridLayout %}
+
 {% set ViewAttrs = {
-  id: 'PageGridLayout',
+  id: 'GridLayout',
   parent: 'Swappable',
   child: 'Grid layout',
   subheading: 'Draggable children do not need to be direct descendants of their container. Wrapper elements can be used to maintain layout and avoid complicated CSS rules.'
@@ -23,5 +25,5 @@
 
 {% block main %}
   {{ PageHeader.render(ViewAttrs.parent, ViewAttrs.subheading) }}
-  {% include 'content/Swappable/GridLayout/GridLayout.html' %}
+  {{ GridLayout.render(ViewAttrs.id) }}
 {% endblock %}

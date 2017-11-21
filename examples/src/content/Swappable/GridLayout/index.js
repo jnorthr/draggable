@@ -1,7 +1,7 @@
 import {Swappable} from '../../../scripts/vendor/draggable';
 
 export default function GridLayout() {
-  const containerSelector = '.Example--pageGrid';
+  const containerSelector = '.GridLayout';
   const containers = document.querySelectorAll(containerSelector);
   const draggable = new Swappable(containers, {
     draggable: '.Block--isDraggable',

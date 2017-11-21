@@ -4,8 +4,10 @@
 {% import 'components/Sidebar/Sidebar.html' as Sidebar %}
 {% import 'components/PageHeader/PageHeader.html' as PageHeader %}
 
+{% import 'content/Home/Home.html' as Home %}
+
 {% set ViewAttrs = {
-  id: 'PageHome',
+  id: 'Home',
   subheading: 'Initializing Draggable on a set of elements enables basic dragging. Dropping items will have no affect.'
 } %}
 
@@ -21,5 +23,5 @@
 
 {% block main %}
   {{ PageHeader.render('Draggable', ViewAttrs.subheading) }}
-  {% include 'content/Home/Home.html' %}
+  {{ Home.render(ViewAttrs.id) }}
 {% endblock %}

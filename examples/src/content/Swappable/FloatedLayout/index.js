@@ -1,8 +1,7 @@
 import {Swappable} from '../../../scripts/vendor/draggable';
 
 export default function FloatedLayout() {
-  const containerSelector = '.Example--pageFloat';
-  const containers = document.querySelectorAll(containerSelector);
+  const containers = document.querySelectorAll('.FloatedLayout');
   const draggable = new Swappable(containers, {
     draggable: '.Block--isDraggable',
     appendTo: source => source.parentNode,

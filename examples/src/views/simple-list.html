@@ -4,8 +4,10 @@
 {% import 'components/Sidebar/Sidebar.html' as Sidebar %}
 {% import 'components/PageHeader/PageHeader.html' as PageHeader %}
 
+{% import 'content/Sortable/SimpleList/SimpleList.html' as SimpleList %}
+
 {% set ViewAttrs = {
-  id: 'PageSimpleList',
+  id: 'SimpleList',
   parent: 'Sortable',
   child: 'Simple list',
   subheading: '...'
@@ -23,5 +25,5 @@
 
 {% block main %}
   {{ PageHeader.render(ViewAttrs.parent, ViewAttrs.subheading) }}
-  {% include 'content/Sortable/SimpleList/SimpleList.html' %}
+  {{ SimpleList.render(ViewAttrs.id) }}
 {% endblock %}
