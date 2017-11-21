@@ -3,7 +3,9 @@
 /// Border
 ////
 
+$border-size-unit: 0.8rem;
+
 $examples-border-data: (
-  thin: 0.6rem solid currentColor,
-  base: 0.8rem solid currentColor,
+  thin: ($border-size-unit * 0.75) solid currentColor,
+  base: $border-size-unit solid currentColor,
 );

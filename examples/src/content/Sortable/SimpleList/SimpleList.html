@@ -1,7 +1,26 @@
 {% macro render(id) %}
   <section id="{{ id }}" class="{{ id }}">
-    <article class="List">
+    <article class="StackedListWrapper">
+      <header class="StackedListHeader">
+        <h3 class="Heading Heading--size3 Heading--colorWhite">Simple list</h3>
+      </header>
 
+      <ul class="StackedList">
+        <li class="StackedListItem StackedListItem--isDraggable">
+          <h4 class="Heading Heading--size4">Item one</h4>
+          <div class="DragHandle"></div>
+        </li>
+
+        <li class="StackedListItem StackedListItem--isDraggable">
+          <h4 class="Heading Heading--size4">Item two</h4>
+          <div class="DragHandle"></div>
+        </li>
+
+        <li class="StackedListItem StackedListItem--isDraggable">
+          <h4 class="Heading Heading--size4">Item three</h4>
+          <div class="DragHandle"></div>
+        </li>
+      </ul>
     </article>
   </section>
 {% endmacro %}

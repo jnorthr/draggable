@@ -55,6 +55,8 @@
 ///
 /// Draggable Blocks
 .Block--isDraggable {
+  cursor: get-cursor(drag);
+
   .BlockContent {
     color: get-color(coal, dark);
     background-color: white;

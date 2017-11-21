@@ -9,8 +9,22 @@
   line-height: get-type-scale(h1, height);
 }
 
+.Heading {
+  color: currentColor;
+}
+
+.Subheading {
+  font-size: get-type-scale(subheading);
+  font-weight: get-type-scale(subheading, weight);
+  color: get-color(coal, light);
+
+  @media screen and (min-width: get-breakpoint(tablet)) {
+    font-size: get-type-scale(subheading, tablet);
+  }
+}
+
 ///
-/// Standard variations
+/// Heading sizes
 .Heading--size1 {
   margin-bottom: get-spacing(tight);
   font-size: get-type-scale(h1);
@@ -39,14 +53,34 @@
   }
 }
 
-///
-/// Subheading
-.Subheading {
-  font-size: get-type-scale(subheading);
-  font-weight: get-type-scale(subheading, weight);
-  color: get-color(coal, light);
+.Heading--size3 {
+  font-size: get-type-scale(h3);
+  font-weight: get-type-scale(h3, weight);
 
   @media screen and (min-width: get-breakpoint(tablet)) {
-    font-size: get-type-scale(subheading, tablet);
+    font-size: get-type-scale(h3, tablet);
   }
+
+  @media screen and (min-width: get-breakpoint(desktop)) {
+    font-size: get-type-scale(h3, desktop);
+  }
+}
+
+.Heading--size4 {
+  font-size: get-type-scale(h4);
+  font-weight: get-type-scale(h4, weight);
+
+  @media screen and (min-width: get-breakpoint(tablet)) {
+    font-size: get-type-scale(h4, tablet);
+  }
+
+  @media screen and (min-width: get-breakpoint(desktop)) {
+    font-size: get-type-scale(h4, desktop);
+  }
+}
+
+///
+/// Heading colors
+.Heading--colorWhite {
+  color: white;
 }

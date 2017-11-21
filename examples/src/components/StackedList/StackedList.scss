@@ -1,0 +1,51 @@
+////
+/// Components
+/// StackedList
+////
+
+@import '../DragHandle/props';
+@import 'utilities/layout';
+
+$stacked-list-header-padding-top: get-spacing(tighter) + ($border-size-unit / 2);
+$stacked-list-header-padding-bottom: get-spacing(tighter) + $border-size-unit;
+
+.StackedListWrapper {
+  @include centered-width(columns(4));
+}
+
+.StackedListHeader {
+  padding: $stacked-list-header-padding-top get-spacing(tighter) $stacked-list-header-padding-bottom;
+  background-color: get-color(coal, dark);
+}
+
+.StackedList {
+  // styles...
+}
+
+.StackedListItem {
+  cursor: get-cursor();
+  position: relative;
+  margin-top: -$border-size-unit;
+  padding: get-spacing(tighter);
+  color: get-color(coal, dark);
+  border: get-border();
+
+  .DragHandle {
+    position: absolute;
+    top: 50%;
+    right: get-spacing(tighter);
+    margin-top: -($draghandle-size / 2);
+  }
+}
+
+.StackedListItem--isDraggable {
+  transition: color get-duration() get-easing();
+
+  &:hover {
+    color: get-color(brand, blue);
+
+    .DragHandle {
+      // @include drag-handle-inverse;
+    }
+  }
+}

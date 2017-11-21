@@ -7,6 +7,7 @@
   @include centered-width(get-layout-length(page-header));
   margin-bottom: get-spacing(loose);
   text-align: center;
+  color: get-color(coal, dark);
 
   @media screen and (min-width: get-breakpoint(tablet)) {
     margin-bottom: get-spacing(loosest);

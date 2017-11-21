@@ -1,0 +1,16 @@
+////
+/// Components
+/// DragHandle props
+////
+
+$draghandle-size: 2rem;
+$draghandle-line-height: 0.4rem;
+
+@mixin drag-handle-inverse {
+  background-color: white;
+
+  &::before,
+  &::after {
+    background-color: currentColor;
+  }
+}
