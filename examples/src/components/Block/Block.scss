@@ -4,6 +4,7 @@
 ////
 
 @import '../../styles/utilities/layout';
+@import '../Halftone/props';
 
 /*
 @keyframes test {
@@ -45,8 +46,6 @@
   }
 
   .Heading {
-    // prevent text selection
-    pointer-events: none;
     // vertical alignment
     margin-top: -0.1em;
   }
@@ -70,18 +69,21 @@
     @media screen and (min-width: get-breakpoint(tablet)) {
       border-color: currentColor;
     }
+
+    @include halftone-bg;
   }
 
   // interaction
   &:focus .BlockContent,
   &:hover .BlockContent {
     color: get-color(brand, blue);
-    border-color: get-color(brand, blue);
+    border-color: currentColor;
   }
 
   &.draggable-source--is-dragging .BlockContent {
-    color: get-color(ash, dark);
-    border-color: get-color(ash, dark);
+    color: get-color(brand, blue);
+
+    @include halftone-bg-animated;
   }
 
 /*

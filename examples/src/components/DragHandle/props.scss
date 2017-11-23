@@ -6,11 +6,11 @@
 $draghandle-size: 2rem;
 $draghandle-line-height: 0.4rem;
 
-@mixin drag-handle-inverse {
+@mixin drag-handle-dragging {
   background-color: white;
 
   &::before,
   &::after {
-    background-color: currentColor;
+    background-color: get-color(brand, blue);
   }
 }

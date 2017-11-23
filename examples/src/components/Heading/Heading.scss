@@ -23,6 +23,11 @@
   }
 }
 
+.Heading--noSelect {
+  // prevent text selection
+  pointer-events: none;
+}
+
 ///
 /// Heading sizes
 .Heading--size1 {

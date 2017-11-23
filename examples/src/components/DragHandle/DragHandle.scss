@@ -10,7 +10,7 @@
   width: $draghandle-size;
   height: $draghandle-size;
   background-color: currentColor;
-  transition: background-color get-duration() get-easing();
+  transition: background-color get-duration(fast) get-easing();
 
   &::before,
   &::after {
@@ -21,7 +21,7 @@
     display: block;
     height: $draghandle-line-height;
     background-color: white;
-    transition: background-color get-duration() get-easing();
+    transition: background-color get-duration(fast) get-easing();
   }
 
   &::before {

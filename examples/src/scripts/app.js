@@ -1,6 +1,7 @@
 import MobileNav from '../components/MobileNav';
 
 import Home from '../content/Home';
+import SimpleList from '../content/Sortable/SimpleList';
 import FloatedLayout from '../content/Swappable/FloatedLayout';
 import GridLayout from '../content/Swappable/GridLayout';
 
@@ -12,5 +13,6 @@ if (navActivator) {
 
 // Initialize all examples
 Home();
+SimpleList();
 FloatedLayout();
 GridLayout();

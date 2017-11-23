@@ -3,8 +3,9 @@
 /// StackedList
 ////
 
+@import '../../styles/utilities/layout';
 @import '../DragHandle/props';
-@import 'utilities/layout';
+@import '../Halftone/props';
 
 $stacked-list-header-padding-top: get-spacing(tighter) + ($border-size-unit / 2);
 $stacked-list-header-padding-bottom: get-spacing(tighter) + $border-size-unit;
@@ -19,16 +20,20 @@ $stacked-list-header-padding-bottom: get-spacing(tighter) + $border-size-unit;
 }
 
 .StackedList {
-  // styles...
+  // position: relative;
 }
 
 .StackedListItem {
   cursor: get-cursor();
-  position: relative;
   margin-top: -$border-size-unit;
+}
+
+.StackedListContent {
+  position: relative;
   padding: get-spacing(tighter);
   color: get-color(coal, dark);
-  border: get-border();
+  background-color: white;
+  border: $border-size-unit solid get-color(coal, dark); // get-border();
 
   .DragHandle {
     position: absolute;
@@ -36,16 +41,93 @@ $stacked-list-header-padding-bottom: get-spacing(tighter) + $border-size-unit;
     right: get-spacing(tighter);
     margin-top: -($draghandle-size / 2);
   }
+
+  @include halftone-bg('after');
 }
 
+///
+/// Sortable behaviour
+
 .StackedListItem--isDraggable {
-  transition: color get-duration() get-easing();
+  cursor: get-cursor(drag);
 
+  .StackedListContent {
+    transition:
+      color get-duration(fast) get-easing(),
+      background-color get-duration(fast) get-easing(),
+      border-color get-duration(fast) get-easing(),
+      transform get-duration() get-easing(bungie);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -$border-size-unit;
+      right: -$border-size-unit;
+      left: -$border-size-unit;
+      display: block;
+      height: $border-size-unit;
+      background-color: get-color(coal, dark);
+      opacity: 0;
+      transition:
+        background-color get-duration(fast) get-easing(),
+        opacity get-duration(fast) get-easing();
+    }
+  }
+
+  // interaction
+  &:focus {
+    outline: none;
+  }
+
+  &:focus,
   &:hover {
-    color: get-color(brand, blue);
+    .StackedListContent {
+      color: get-color(brand, blue);
+      border-color: currentColor;
+    }
 
-    .DragHandle {
-      // @include drag-handle-inverse;
+    + .StackedListItem {
+      .StackedListContent::before {
+        background-color: get-color(brand, blue);
+        opacity: 1;
+      }
+    }
+  }
+
+  &.draggable-source--is-dragging {
+    .StackedListContent {
+      color: get-color(brand, blue);
+      border-color: currentColor;
+
+      @include halftone-bg-animated('after');
+    }
+
+    + .StackedListItem,
+    + .StackedListItem--isCloned + .StackedListItem {
+      .StackedListContent::before {
+        background-color: get-color(brand, blue);
+        opacity: 1;
+      }
+    }
+  }
+
+  &.draggable-mirror {
+    z-index: get-z-index(overlay);
+
+    .StackedListContent {
+      color: white;
+      background-color: get-color(brand, blue);
+      border-color: get-color(brand, blue);
+      transform: scale(1.025);
+
+      &::before,
+      &::after {
+        display: none;
+      }
+
+      .DragHandle {
+        @include drag-handle-dragging;
+      }
     }
   }
 }

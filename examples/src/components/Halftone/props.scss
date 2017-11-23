@@ -1,0 +1,31 @@
+////
+/// Components
+/// Halftone props
+////
+
+@import '../../styles/utilities/layout';
+
+$halftone-bg-size: 2.4rem;
+
+@mixin halftone-bg($psuedo: 'before') {
+  &::#{unquote($psuedo)} {
+    @include position-cover;
+    content: '';
+    display: block;
+    pointer-events: none;
+
+    @content;
+  }
+}
+
+@mixin halftone-bg-animated($psuedo: 'before') {
+  &::#{unquote($psuedo)} {
+    background-image: var(--halftone-bg);
+    background-size: $halftone-bg-size $halftone-bg-size;
+    animation:
+      halftone get-duration(slow) steps(3) infinite both,
+      fade-in get-duration() get-easing() both;
+
+    @content;
+  }
+}
