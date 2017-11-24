@@ -4,7 +4,7 @@
 ////
 
 @import '../../styles/utilities/layout';
-@import '../DragHandle/props';
+@import '../Handle/props';
 @import '../Halftone/props';
 
 $stacked-list-header-padding-top: get-spacing(tighter) + ($border-size-unit / 2);
@@ -19,10 +19,6 @@ $stacked-list-header-padding-bottom: get-spacing(tighter) + $border-size-unit;
   background-color: get-color(coal, dark);
 }
 
-.StackedList {
-  // position: relative;
-}
-
 .StackedListItem {
   cursor: get-cursor();
   margin-top: -$border-size-unit;
@@ -34,12 +30,33 @@ $stacked-list-header-padding-bottom: get-spacing(tighter) + $border-size-unit;
   color: get-color(coal, dark);
   background-color: white;
   border: $border-size-unit solid get-color(coal, dark); // get-border();
+  transition:
+    color get-duration(fast) get-easing(),
+    background-color get-duration(fast) get-easing(),
+    border-color get-duration(fast) get-easing(),
+    transform get-duration() get-easing(bungie);
 
-  .DragHandle {
+  &::before {
+    content: '';
+    position: absolute;
+    top: -$border-size-unit;
+    right: -$border-size-unit;
+    left: -$border-size-unit;
+    display: block;
+    height: $border-size-unit;
+    background-color: get-color(coal, dark);
+    opacity: 0;
+    transition:
+      background-color get-duration(fast) get-easing(),
+      opacity get-duration(fast) get-easing();
+  }
+
+  .DragHandle,
+  .NopeHandle {
     position: absolute;
     top: 50%;
     right: get-spacing(tighter);
-    margin-top: -($draghandle-size / 2);
+    margin-top: -($handle-size / 2);
   }
 
   @include halftone-bg('after');
@@ -50,29 +67,6 @@ $stacked-list-header-padding-bottom: get-spacing(tighter) + $border-size-unit;
 
 .StackedListItem--isDraggable {
   cursor: get-cursor(drag);
-
-  .StackedListContent {
-    transition:
-      color get-duration(fast) get-easing(),
-      background-color get-duration(fast) get-easing(),
-      border-color get-duration(fast) get-easing(),
-      transform get-duration() get-easing(bungie);
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: -$border-size-unit;
-      right: -$border-size-unit;
-      left: -$border-size-unit;
-      display: block;
-      height: $border-size-unit;
-      background-color: get-color(coal, dark);
-      opacity: 0;
-      transition:
-        background-color get-duration(fast) get-easing(),
-        opacity get-duration(fast) get-easing();
-    }
-  }
 
   // interaction
   &:focus {

@@ -7,8 +7,8 @@
 
 .DragHandle {
   position: relative;
-  width: $draghandle-size;
-  height: $draghandle-size;
+  width: $handle-size;
+  height: $handle-size;
   background-color: currentColor;
   transition: background-color get-duration(fast) get-easing();
 
@@ -19,16 +19,16 @@
     right: 0;
     left: 0;
     display: block;
-    height: $draghandle-line-height;
+    height: $handle-stroke-width;
     background-color: white;
     transition: background-color get-duration(fast) get-easing();
   }
 
   &::before {
-    top: $draghandle-line-height;
+    top: $handle-stroke-width;
   }
 
   &::after {
-    bottom: $draghandle-line-height;
+    bottom: $handle-stroke-width;
   }
 }

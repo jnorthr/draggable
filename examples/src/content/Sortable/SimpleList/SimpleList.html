@@ -1,3 +1,5 @@
+{% import '../../../components/StackedList/StackedListItem.html' as StackedListItem %}
+
 {% macro render(id) %}
   <section id="{{ id }}" class="{{ id }}">
     <article class="StackedListWrapper">
@@ -6,26 +8,12 @@
       </header>
 
       <ul class="StackedList">
-        <li class="StackedListItem StackedListItem--isDraggable" tabindex="1">
-          <div class="StackedListContent">
-            <h4 class="Heading Heading--size4 Heading--noSelect">Item one</h4>
-            <div class="DragHandle"></div>
-          </div>
-        </li>
-
-        <li class="StackedListItem StackedListItem--isDraggable" tabindex="2">
-          <div class="StackedListContent">
-            <h4 class="Heading Heading--size4 Heading--noSelect">Item two</h4>
-            <div class="DragHandle"></div>
-          </div>
-        </li>
-
-        <li class="StackedListItem StackedListItem--isDraggable" tabindex="3">
-          <div class="StackedListContent">
-            <h4 class="Heading Heading--size4 Heading--noSelect">Item three</h4>
-            <div class="DragHandle"></div>
-          </div>
-        </li>
+        {{ StackedListItem.render('Item one',   {index: 1, draggable: true}) }}
+        {{ StackedListItem.render('Item two',   {index: 2, draggable: true}) }}
+        {{ StackedListItem.render('Item three', {index: 3, draggable: true}) }}
+        {{ StackedListItem.render('Item four') }}
+        {{ StackedListItem.render('Item five',  {index: 4, draggable: true}) }}
+        {{ StackedListItem.render('Item six',   {index: 5, draggable: true}) }}
       </ul>
     </article>
   </section>
