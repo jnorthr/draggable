@@ -1,8 +1,28 @@
 ////
 /// Content
-/// Simple list
+/// MultipleContainers
 ////
 
-.SimpleList {
+.MultipleContainers {
+  @include centered-width(columns(5));
+  display: grid;
+  grid-gap: get-layout-length(gutter);
 
+  // grid-template-rows: repeat($grid-rows, columns());
+  grid-template-columns: 100%;
+  grid-template-areas: 'a' 'b' 'c';
+
+  .Container {
+    &:nth-child(1) {
+      grid-area: a;
+    }
+
+    &:nth-child(2) {
+      grid-area: b;
+    }
+
+    &:nth-child(3) {
+      grid-area: c;
+    }
+  }
 }

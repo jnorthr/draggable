@@ -4,20 +4,16 @@
 ////
 
 @import '../../styles/utilities/layout';
+@import './props';
 @import '../Handle/props';
 @import '../Halftone/props';
-
-$stacked-list-header-padding-top: get-spacing(tighter) + ($border-size-unit / 2);
-$stacked-list-header-padding-bottom: get-spacing(tighter) + $border-size-unit;
-
-$stacked-list-min-size: 7.2rem;
 
 .StackedListWrapper {
   // no styles
 }
 
 .StackedListHeader {
-  padding: $stacked-list-header-padding-top get-spacing(tighter) $stacked-list-header-padding-bottom;
+  padding: stacked-list(padding-top) get-spacing(tighter) $stacked-list-header-padding-bottom;
   background-color: get-color(coal, dark);
 
   p {
@@ -161,20 +157,63 @@ $stacked-list-min-size: 7.2rem;
 
 
 
+.StackedListWrapper--sizeMedium {
+  .StackedListHeader {
+    // padding: stacked-list(padding-top, desktop) get-spacing(tighter) $stacked-list-header-padding-bottom;
+  }
+
+  .StackedList {
+/*
+    // How do you allow items to be moved back into an emptied container?
+    min-width: $stacked-list-min-size;
+    min-height: $stacked-list-min-size;
+*/
+  }
+
+  .StackedListContent {
+    // padding: get-spacing(tighter);
+  }
+}
 
 
 
-
-$size-large: 14rem;
+///
+/// Horizontal axis
 
 .StackedListWrapper--axisHorizontal {
-  margin-bottom: get-spacing();
-
+  position: relative;
   display: flex;
-  height: $size-large;
+  height: $stacked-list-item-size-large;
+
+  @media screen and (min-width: get-breakpoint('720p')) {
+    height: $stacked-list-item-size-large-desktop;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    width: $border-size-unit;
+    background-color: get-color(coal, dark);
+    transition: opacity get-duration() get-easing();
+  }
+
+  // does not address :focus on child elements
+  &:hover {
+    &::after {
+      opacity: 0.1;
+    }
+  }
 
   .StackedListHeader {
-    flex: 0 0 $size-large;
+    flex: 0 0 $stacked-list-item-size-large;
+
+    @media screen and (min-width: get-breakpoint('720p')) {
+      flex-basis: $stacked-list-item-size-large-desktop;
+    }
   }
 
   .StackedList {
@@ -182,18 +221,22 @@ $size-large: 14rem;
     flex: 1 1 auto;
     margin-top: 0;
     margin-left: -$border-size-unit;
-
     overflow-x: scroll;
   }
 
   .StackedListItem {
-    flex: 1 0 $size-large;
-    max-width: $size-large * 2;
+    flex: 1 0 $stacked-list-item-size-large;
+    max-width: $stacked-list-item-size-large * 2;
     height: 100%;
 
     &:nth-child(1n+2) {
       margin-top: 0;
       margin-left: -$border-size-unit;
+    }
+
+    @media screen and (min-width: get-breakpoint('720p')) {
+      flex-basis: $stacked-list-item-size-large-desktop;
+      max-width: $stacked-list-item-size-large-desktop * 2;
     }
   }
 
@@ -217,4 +260,3 @@ $size-large: 14rem;
     margin-left: 0;
   }
 }
-

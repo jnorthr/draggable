@@ -8,7 +8,7 @@
   {% set tabIndex = 'tabindex="1"' if options.draggable %}
   {% set iconClass = 'DragHandle' if options.draggable else 'NopeHandle' %}
 
-  <li class="{{ classes }}" {{ tabIndex }}>
+  <li class="{{ classes }}" {{ tabIndex | safe }}>
     <div class="StackedListContent">
       <h4 class="Heading Heading--size4 Heading--noSelect">{{ heading }}</h4>
       <div class="{{ iconClass }}"></div>

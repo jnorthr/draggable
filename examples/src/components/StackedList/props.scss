@@ -1,0 +1,36 @@
+////
+/// Components
+/// StackedList props
+////
+
+$stacked-list-header-padding-top: get-spacing(tighter) + ($border-size-unit / 2);
+$stacked-list-header-padding-bottom: get-spacing(tighter) + $border-size-unit;
+
+$stacked-list-min-size: 7.2rem;
+
+$stacked-list-item-size-large: 14rem;
+
+
+$stacked-list-item-size-large-desktop: columns(2);
+
+
+
+
+
+
+$stacked-list-data: (
+  padding-top: (
+    base: get-spacing(tighter) + ($border-size-unit / 2),
+    desktop: get-spacing() + ($border-size-unit / 2),
+  ),
+  padding-bottom: (
+    base: get-spacing(tighter) + $border-size-unit,
+    desktop: get-spacing() + $border-size-unit,
+  ),
+);
+
+@function stacked-list($group: $threads-default-value, $variant: $threads-default-value) {
+  $fetched-stacked-list: threads-value-get($stacked-list-data, $group, $variant);
+
+  @return $fetched-stacked-list;
+}
