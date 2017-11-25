@@ -7,7 +7,7 @@ export default function FloatedLayout() {
     appendTo: source => source.parentNode,
     // placedTimeout: 3000,
     classes: {
-      'source:placed': '',
+      'source:placed': '', // doesn't work
     },
   });
 
@@ -20,6 +20,7 @@ export default function FloatedLayout() {
     console.log('Drag: Start', evt); // eslint-disable-line no-console
   });
 
+  /*
   // doesn't actually work... consult with Max
   draggable.on('swappable:swapped', ({dragEvent, swappedElement}) => {
     const mirror = dragEvent.data.mirror;
@@ -27,6 +28,7 @@ export default function FloatedLayout() {
 
     mirror.style.height = `${swappedHeight}px`;
   });
+*/
 
   draggable.on('drag:stop', evt => {
     evt.originalSource.classList.remove('Block--isCloned');

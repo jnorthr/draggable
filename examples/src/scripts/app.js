@@ -2,6 +2,7 @@ import MobileNav from '../components/MobileNav';
 
 import Home from '../content/Home';
 import SimpleList from '../content/Sortable/SimpleList';
+import MultipleContainers from '../content/Sortable/MultipleContainers';
 import FloatedLayout from '../content/Swappable/FloatedLayout';
 import GridLayout from '../content/Swappable/GridLayout';
 
@@ -14,5 +15,6 @@ if (navActivator) {
 // Initialize all examples
 Home();
 SimpleList();
+MultipleContainers();
 FloatedLayout();
 GridLayout();
