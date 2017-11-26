@@ -1,9 +1,12 @@
 ////
 /// Components
-/// Halftone props
+/// Pattern props
 ////
 
 @import '../../styles/utilities/layout';
+
+///
+/// Halftone
 
 $halftone-bg-size: 2.4rem;
 
@@ -28,4 +31,15 @@ $halftone-bg-size: 2.4rem;
 
     @content;
   }
+}
+
+///
+/// Stripes
+
+$stripes-bg-size: 3.2rem;
+
+@mixin stripes-bg {
+  background-image: var(--stripes-bg);
+  background-color: white;
+  background-size: $stripes-bg-size $stripes-bg-size;
 }

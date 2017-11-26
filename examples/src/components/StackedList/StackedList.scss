@@ -6,15 +6,22 @@
 @import '../../styles/utilities/layout';
 @import './props';
 @import '../Handle/props';
-@import '../Halftone/props';
+@import '../Patterns/props';
 
 .StackedListWrapper {
-  // no styles
+  position: relative;
+  @include stripes-bg;
+  box-shadow: inset 0 0 0 $border-size-unit get-color(coal, dark);
 }
 
 .StackedListHeader {
-  padding: stacked-list(padding-top) get-spacing(tighter) $stacked-list-header-padding-bottom;
+  padding: stacked-list-header(padding-top) get-spacing(tighter) stacked-list-header(padding-bottom);
+  min-height: stacked-list-item();
   background-color: get-color(coal, dark);
+
+  @media screen and (min-width: get-breakpoint(desktop)) {
+    min-height: stacked-list-item(base, desktop);
+  }
 
   p {
     margin-top: 0.2em;
@@ -34,11 +41,13 @@
 .StackedList {
   margin-top: -$border-size-unit;
 
+/*
   // How do you allow items to be moved back into an emptied container?
-  min-width: $stacked-list-min-size;
-  min-height: $stacked-list-min-size;
+  min-width: stacked-list-item();
+  min-height: stacked-list-item();
   box-shadow: inset 0 0 0 $border-size-unit get-color(coal);
   background-color: get-color(ash);
+*/
 }
 
 .StackedListItem {
@@ -47,6 +56,10 @@
   &:nth-child(1n+2) {
     margin-top: -$border-size-unit;
   }
+
+  .StackedListItem--isCloned:first-child + & {
+    margin-top: 0;
+  }
 }
 
 .StackedListContent {
@@ -54,14 +67,19 @@
   display: flex;
   align-items: center;
   padding: get-spacing(tighter);
+  min-height: stacked-list-item();
   color: get-color(coal, dark);
-  background-color: white;
+  background-color: rgba(white, 0.8);
   border: $border-size-unit solid get-color(coal, dark); // get-border();
   transition:
     color get-duration(fast) get-easing(),
     background-color get-duration(fast) get-easing(),
     border-color get-duration(fast) get-easing(),
     transform get-duration() get-easing(bungie);
+
+  @media screen and (min-width: get-breakpoint(desktop)) {
+    min-height: stacked-list-item(base, desktop);
+  }
 
   .Heading {
     flex: 1 1 auto;
@@ -88,175 +106,5 @@
     transition:
       background-color get-duration(fast) get-easing(),
       opacity get-duration(fast) get-easing();
-  }
-}
-
-///
-/// Sortable behaviour
-
-.StackedListItem--isDraggable {
-  cursor: get-cursor(drag);
-
-  // interaction
-  &:focus {
-    outline: none;
-  }
-
-  &:focus,
-  &:hover {
-    .StackedListContent {
-      color: get-color(brand, blue);
-      border-color: currentColor;
-    }
-
-    + .StackedListItem {
-      .StackedListContent::before {
-        background-color: get-color(brand, blue);
-        opacity: 1;
-      }
-    }
-  }
-
-  &.draggable-source--is-dragging {
-    .StackedListContent {
-      color: get-color(brand, blue);
-      border-color: currentColor;
-
-      @include halftone-bg-animated('after');
-    }
-
-    + .StackedListItem,
-    + .StackedListItem--isCloned + .StackedListItem {
-      .StackedListContent::before {
-        background-color: get-color(brand, blue);
-        opacity: 1;
-      }
-    }
-  }
-
-  &.draggable-mirror {
-    z-index: get-z-index(overlay);
-
-    .StackedListContent {
-      color: white;
-      background-color: get-color(brand, blue);
-      border-color: get-color(brand, blue);
-      transform: scale(1.025);
-
-      &::before,
-      &::after {
-        display: none;
-      }
-    }
-
-    .DragHandle {
-      @include drag-handle-dragging;
-    }
-  }
-}
-
-
-
-.StackedListWrapper--sizeMedium {
-  .StackedListHeader {
-    // padding: stacked-list(padding-top, desktop) get-spacing(tighter) $stacked-list-header-padding-bottom;
-  }
-
-  .StackedList {
-/*
-    // How do you allow items to be moved back into an emptied container?
-    min-width: $stacked-list-min-size;
-    min-height: $stacked-list-min-size;
-*/
-  }
-
-  .StackedListContent {
-    // padding: get-spacing(tighter);
-  }
-}
-
-
-
-///
-/// Horizontal axis
-
-.StackedListWrapper--axisHorizontal {
-  position: relative;
-  display: flex;
-  height: $stacked-list-item-size-large;
-
-  @media screen and (min-width: get-breakpoint('720p')) {
-    height: $stacked-list-item-size-large-desktop;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    display: block;
-    width: $border-size-unit;
-    background-color: get-color(coal, dark);
-    transition: opacity get-duration() get-easing();
-  }
-
-  // does not address :focus on child elements
-  &:hover {
-    &::after {
-      opacity: 0.1;
-    }
-  }
-
-  .StackedListHeader {
-    flex: 0 0 $stacked-list-item-size-large;
-
-    @media screen and (min-width: get-breakpoint('720p')) {
-      flex-basis: $stacked-list-item-size-large-desktop;
-    }
-  }
-
-  .StackedList {
-    display: flex;
-    flex: 1 1 auto;
-    margin-top: 0;
-    margin-left: -$border-size-unit;
-    overflow-x: scroll;
-  }
-
-  .StackedListItem {
-    flex: 1 0 $stacked-list-item-size-large;
-    max-width: $stacked-list-item-size-large * 2;
-    height: 100%;
-
-    &:nth-child(1n+2) {
-      margin-top: 0;
-      margin-left: -$border-size-unit;
-    }
-
-    @media screen and (min-width: get-breakpoint('720p')) {
-      flex-basis: $stacked-list-item-size-large-desktop;
-      max-width: $stacked-list-item-size-large-desktop * 2;
-    }
-  }
-
-  .StackedListContent {
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-
-    &::before {
-      top: -$border-size-unit;
-      right: auto;
-      bottom: -$border-size-unit;
-      left: -$border-size-unit;
-      width: $border-size-unit;
-      height: auto;
-    }
-  }
-
-  .DragHandle,
-  .NopeHandle {
-    margin-left: 0;
   }
 }
