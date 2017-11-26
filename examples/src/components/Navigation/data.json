@@ -21,6 +21,7 @@
     {
       "Swappable": [
         "Floated layout",
+        "Flexbox layout",
         "Grid layout"
       ]
     },

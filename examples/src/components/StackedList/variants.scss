@@ -262,8 +262,8 @@
   cursor: get-cursor(drag);
 
   .StackedListContent {
-    background: white;
-    background-size: auto auto;
+    @include pattern-bg-reset;
+    background-color: white;
   }
 
   // interaction

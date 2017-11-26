@@ -3,19 +3,19 @@
 /// Floated Layout
 ////
 
-@import './mixins';
+@import '../mixins';
 
 .FloatedLayout {
   @media screen and (max-width: get-breakpoint(tablet) - 1px) {
-    @include floated-layout-selectors(1, 2, 3, 4, 5, 7, 8) {
+    @include swappable-block-layout(1, 2, 3, 4, 5, 7, 8) {
       width: 50%;
     }
 
-    @include floated-layout-selectors(6) {
+    @include swappable-block-layout(6) {
       width: 100%;
     }
 
-    @include floated-layout-selectors(3) {
+    @include swappable-block-layout(3) {
       .BlockContent {
         height: columns(2);
       }
@@ -29,27 +29,27 @@
   }
 
   @media screen and (min-width: get-breakpoint(tablet)) {
-    @include floated-layout-selectors(1, 2, 3) {
+    @include swappable-block-layout(1, 2, 3) {
       width: 33.333%;
     }
 
-    @include floated-layout-selectors(4, 5, 6, 7, 8) {
+    @include swappable-block-layout(4, 5, 6, 7, 8) {
       width: 50%;
     }
 
-    @include floated-layout-selectors(1, 2, 3, 7, 8) {
+    @include swappable-block-layout(1, 2, 3, 7, 8) {
       .BlockContent {
         height: columns() * 1.5;
       }
     }
 
-    @include floated-layout-selectors(4) {
+    @include swappable-block-layout(4) {
       .BlockContent {
         height: columns(3);
       }
     }
 
-    @include floated-layout-selectors(5, 6) {
+    @include swappable-block-layout(5, 6) {
       .BlockContent {
         height: (columns() * 1.5) + (get-layout-length(gutter) / 2);
       }
@@ -57,7 +57,7 @@
   }
 
   @media screen and (min-width: get-breakpoint(desktop)) {
-    @include floated-layout-selectors(1, 2, 3, 7, 8) {
+    @include swappable-block-layout(1, 2, 3, 7, 8) {
       .BlockContent {
         height: columns(2);
       }
@@ -65,19 +65,19 @@
   }
 
   @media screen and (min-width: get-breakpoint('1080p', wide)) {
-    @include floated-layout-selectors(4) {
+    @include swappable-block-layout(4) {
       .BlockContent {
         height: columns(4);
       }
     }
 
-    @include floated-layout-selectors(5, 6) {
+    @include swappable-block-layout(5, 6) {
       .BlockContent {
         height: columns(2);
       }
     }
 
-    @include floated-layout-selectors(7, 8) {
+    @include swappable-block-layout(7, 8) {
       .BlockContent {
         height: columns() * 2.5;
       }

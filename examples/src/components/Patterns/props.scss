@@ -5,10 +5,16 @@
 
 @import '../../styles/utilities/layout';
 
+@mixin pattern-bg-reset {
+  background-image: none;
+  background-color: transparent;
+  background-size: auto auto;
+}
+
 ///
 /// Halftone
 
-$halftone-bg-size: 2.4rem;
+$halftone-bg-size: 1.2rem;
 
 @mixin halftone-bg($psuedo: 'before') {
   &::#{unquote($psuedo)} {
@@ -36,10 +42,17 @@ $halftone-bg-size: 2.4rem;
 ///
 /// Stripes
 
-$stripes-bg-size: 3.2rem;
+$stripes-tight-bg-size: 0.4rem;
+$stripes-loose-bg-size: 0.8rem;
 
-@mixin stripes-bg {
-  background-image: var(--stripes-bg);
+@mixin stripes-tight-bg {
+  background-image: var(--stripes-tight-bg);
   background-color: white;
-  background-size: $stripes-bg-size $stripes-bg-size;
+  background-size: $stripes-tight-bg-size $stripes-tight-bg-size;
+}
+
+@mixin stripes-loose-bg {
+  background-image: var(--stripes-loose-bg);
+  background-color: white;
+  background-size: $stripes-loose-bg-size $stripes-loose-bg-size;
 }
