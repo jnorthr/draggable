@@ -1,11 +1,11 @@
 ////
 /// Content
-/// Flexbox Layout
+/// SwapAnimation
 ////
 
-@import '../mixins';
+@import '../../shared/mixins';
 
-.FlexboxLayout {
+.SwapAnimation {
   @include swappable-block-layout(1, 2, 4, 5) {
     flex-basis: 50%;
   }

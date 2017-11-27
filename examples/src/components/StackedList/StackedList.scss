@@ -63,12 +63,12 @@
 }
 
 .StackedListContent {
-  @include stripes-tight-bg;
   position: relative;
   display: flex;
   align-items: center;
   padding: get-spacing(tighter);
   min-height: stacked-list-item();
+  background-color: get-color(ash, light);
   color: get-color(coal, dark);
   border: $border-size-unit solid get-color(coal, dark); // get-border();
   transition:

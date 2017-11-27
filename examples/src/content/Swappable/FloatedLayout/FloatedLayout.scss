@@ -3,7 +3,7 @@
 /// Floated Layout
 ////
 
-@import '../mixins';
+@import '../../shared/mixins';
 
 .FloatedLayout {
   @media screen and (max-width: get-breakpoint(tablet) - 1px) {

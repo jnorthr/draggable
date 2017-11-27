@@ -4,13 +4,13 @@
 {% import 'components/Sidebar/Sidebar.html' as Sidebar %}
 {% import 'components/PageHeader/PageHeader.html' as PageHeader %}
 
-{% import 'content/Swappable/FlexboxLayout/FlexboxLayout.html' as FlexboxLayout %}
+{% import 'content/Plugins/SwapAnimation/SwapAnimation.html' as SwapAnimation %}
 
 {% set ViewAttrs = {
-  id: 'FlexboxLayout',
-  parent: 'Swappable',
-  child: 'Flexbox layout',
-  subheading: 'Probably use this for the SwapAnimation example.'
+  id: 'SwapAnimation',
+  parent: 'Plugins',
+  child: 'Swap Animation',
+  subheading: '...'
 } %}
 
 {% block PageId %}{{ ViewAttrs.id }}{% endblock %}
@@ -25,5 +25,5 @@
 
 {% block main %}
   {{ PageHeader.render(ViewAttrs.parent, ViewAttrs.subheading) }}
-  {{ FlexboxLayout.render(ViewAttrs.id) }}
+  {{ SwapAnimation.render(ViewAttrs.id) }}
 {% endblock %}

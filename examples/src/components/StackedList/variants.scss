@@ -212,6 +212,7 @@
 
   .StackedListContent {
     height: 100%;
+    text-align: center;
 
     &::before {
       top: -$border-size-unit;
@@ -262,7 +263,6 @@
   cursor: get-cursor(drag);
 
   .StackedListContent {
-    @include pattern-bg-reset;
     background-color: white;
   }
 

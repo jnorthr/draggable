@@ -1,7 +1,7 @@
 import {Swappable} from '../../../scripts/vendor/draggable';
 
-export default function FlexboxLayout() {
-  const containers = document.querySelectorAll('.FlexboxLayout');
+export default function SwapAnimation() {
+  const containers = document.querySelectorAll('.SwapAnimation');
   const draggable = new Swappable(containers, {
     draggable: '.Block--isDraggable',
     appendTo: source => source.parentNode,
