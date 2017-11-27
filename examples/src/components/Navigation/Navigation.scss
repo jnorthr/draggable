@@ -40,7 +40,7 @@
 .NavLink {
   font-size: get-type-scale(nav);
   letter-spacing: get-type-scale(nav, tracking);
-  line-height: get-type-scale(nav, height);
+  line-height: get-type-scale(nav, leading);
 
   @media screen and (min-width: get-breakpoint()) {
     font-size: get-type-scale(nav, '960');

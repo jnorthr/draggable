@@ -4,11 +4,13 @@
 {% import 'components/Sidebar/Sidebar.html' as Sidebar %}
 {% import 'components/PageHeader/PageHeader.html' as PageHeader %}
 
-{% import 'content/Home/Home.html' as Home %}
+{% import 'content/Draggable/BasicDragging/BasicDragging.html' as BasicDragging %}
 
 {% set ViewAttrs = {
-  id: 'Home',
-  subheading: 'Draggable is a lightweight, responsive, modern drag and drop JavaScript library – the ideal choice for adding slick native-feeling drag and drop behaviour to your web apps.'
+  id: 'BasicDragging',
+  parent: 'Draggable',
+  child: 'Basic dragging',
+  subheading: 'Initializing Draggable on a set of elements enables basic dragging. Dropping items will have no affect.'
 } %}
 
 {% block PageId %}{{ ViewAttrs.id }}{% endblock %}
@@ -22,6 +24,6 @@
 {% endblock %}
 
 {% block main %}
-  {{ PageHeader.render('Draggable', ViewAttrs.subheading) }}
-  {{ Home.render(ViewAttrs.id) }}
+  {{ PageHeader.render(ViewAttrs.parent, ViewAttrs.subheading) }}
+  {{ BasicDragging.render(ViewAttrs.id) }}
 {% endblock %}

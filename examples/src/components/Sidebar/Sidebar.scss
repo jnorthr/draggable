@@ -75,7 +75,7 @@
 .LegalText {
   font-size: get-type-scale(footer);
   font-weight: get-type-scale(footer, weight);
-  line-height: get-type-scale(footer, height);
+  line-height: get-type-scale(footer, leading);
   color: white;
 
   & + & {

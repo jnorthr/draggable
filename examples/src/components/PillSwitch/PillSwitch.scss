@@ -1,0 +1,89 @@
+////
+/// Components
+/// PillSwitch
+////
+
+@import './props';
+@import 'utilities/layout';
+
+.PillSwitch {
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  width: pill-switch(size);
+  height: pill-switch(size);
+  // background: rgba(black, 0.1);
+
+  @media screen and (min-width: get-breakpoint(tablet)) {
+    width: pill-switch(size, tablet);
+    height: pill-switch(size, tablet);
+  }
+}
+
+.PillSwitchTrack {
+  @include pill-switch-track-layout;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: get-color(coal, dark);
+  border: 0.8rem solid get-color(coal, dark);
+  transform: rotate(-45deg);
+  // transform-origin: bottom left;
+
+  @media screen and (min-width: get-breakpoint(tablet)) {
+    @include pill-switch-track-layout('tablet');
+    border-width: 1.6rem;
+  }
+}
+
+.PillSwitchControl {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: pill-switch(control-size);
+  height: pill-switch(control-size);
+  color: get-color(coal, dark);
+  background-color: white;
+  border: 0.8rem solid currentColor;
+  border-radius: 50%;
+  transition: color get-duration(fast) get-easing();
+
+  @media screen and (min-width: get-breakpoint(tablet)) {
+    width: pill-switch(control-size, tablet);
+    height: pill-switch(control-size, tablet);
+    border-width: 1.6rem;
+  }
+
+  // visually center
+  .Heading {
+    margin-top: -0.1em;
+    margin-left: -0.05em;
+  }
+
+  &:focus,
+  &:hover,
+  &.draggable-mirror {
+    color: get-color(brand, blue);
+  }
+
+  &:active {
+    color: get-color(brand, blue-dark);
+  }
+
+  &.draggable-source--is-dragging {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/*
+.PillSwitchDropzone {
+  @include pill-switch-control;
+  right: 0;
+  background: green;
+}
+*/

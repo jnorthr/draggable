@@ -33,14 +33,19 @@
 @import '../components/Handle/DragHandle';
 @import '../components/Handle/NopeHandle';
 @import '../components/Patterns/Patterns';
+
 @import '../components/Block/BlockLayout';
 @import '../components/Block/Block';
+
+@import '../components/PillSwitch/PillSwitch';
+
 @import '../components/StackedList/StackedList';
 @import '../components/StackedList/variants';
 
 ///
 /// Example content
 @import '../content/Home/Home';
+@import '../content/Draggable/BasicDragging/BasicDragging';
 @import '../content/Sortable/SimpleList/SimpleList';
 @import '../content/Sortable/MultipleContainers/MultipleContainers';
 @import '../content/Swappable/FloatedLayout/FloatedLayout';
