@@ -5,35 +5,37 @@
 
 @import '../../shared/mixins';
 
+$swap-anim-block-name: unquote('Block');
+
 .SwapAnimation {
-  @include swappable-block-layout(1, 2, 4, 5) {
+  @include draggable-source-layout($swap-anim-block-name, 1, 2, 4, 5) {
     flex-basis: 50%;
   }
 
-  @include swappable-block-layout(3, 6, 7) {
+  @include draggable-source-layout($swap-anim-block-name, 3, 6, 7) {
     flex-basis: 100%;
   }
 
-  @include swappable-block-layout(1, 2, 4, 5, 7) {
+  @include draggable-source-layout($swap-anim-block-name, 1, 2, 4, 5, 7) {
     .BlockContent {
       height: columns();
     }
   }
 
-  @include swappable-block-layout(3, 6) {
+  @include draggable-source-layout($swap-anim-block-name, 3, 6) {
     .BlockContent {
       height: columns() * 1.5;
     }
   }
 
   @media screen and (min-width: get-breakpoint(tablet)) {
-    @include swappable-block-layout(1, 2, 4, 5, 7) {
+    @include draggable-source-layout($swap-anim-block-name, 1, 2, 4, 5, 7) {
       .BlockContent {
         height: columns() * 1.5;
       }
     }
 
-    @include swappable-block-layout(3, 6) {
+    @include draggable-source-layout($swap-anim-block-name, 3, 6) {
       .BlockContent {
         height: columns(2);
       }
@@ -41,29 +43,29 @@
   }
 
   @media screen and (min-width: get-breakpoint(desktop)) {
-    @include swappable-block-layout(1, 2, 3) {
+    @include draggable-source-layout($swap-anim-block-name, 1, 2, 3) {
       flex-basis: 33.333%;
     }
 
-    @include swappable-block-layout(4) {
+    @include draggable-source-layout($swap-anim-block-name, 4) {
       flex-basis: 25%;
     }
 
-    @include swappable-block-layout(5) {
+    @include draggable-source-layout($swap-anim-block-name, 5) {
       flex-basis: 75%;
     }
 
-    @include swappable-block-layout(6, 7) {
+    @include draggable-source-layout($swap-anim-block-name, 6, 7) {
       flex-basis: 50%;
     }
 
-    @include swappable-block-layout(1, 2, 3, 4, 6, 7) {
+    @include draggable-source-layout($swap-anim-block-name, 1, 2, 3, 4, 6, 7) {
       .BlockContent {
         height: columns(2);
       }
     }
 
-    @include swappable-block-layout(4, 5) {
+    @include draggable-source-layout($swap-anim-block-name, 4, 5) {
       .BlockContent {
         height: columns(3);
       }
@@ -71,13 +73,13 @@
   }
 
   @media screen and (min-width: get-breakpoint('1080p', wide)) {
-    @include swappable-block-layout(1, 2, 3, 4, 6, 7) {
+    @include draggable-source-layout($swap-anim-block-name, 1, 2, 3, 4, 6, 7) {
       .BlockContent {
         height: columns() * 2.5;
       }
     }
 
-    @include swappable-block-layout(4, 5) {
+    @include draggable-source-layout($swap-anim-block-name, 4, 5) {
       .BlockContent {
         height: columns() * 3.5;
       }

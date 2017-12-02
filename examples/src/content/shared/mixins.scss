@@ -3,15 +3,18 @@
 /// Shared mixins
 ////
 
-/// Generate a selector chain for Swappable Block layouts
+/// Generate a selector chain to resolve draggable source layouts
+/// Assumed the variant suffix of `--isCloned`
 /// @param {ArgList} $nth-children - Any number of numeric values
 /// eg: (1, 2, 5, 7, 8, 9)
-@mixin swappable-block-layout($nth-children...) {
+@mixin draggable-source-layout($block-name, $nth-children...) {
   $selector-chain: ();
 
   @each $child in $nth-children {
-    $child-selector: unquote('.Block:nth-child(#{$child})');
-    $adjacent-clone-selector: unquote('.Block--isCloned ~ .Block:nth-child(#{$child + 1})');
+    $child-selector: unquote('.#{$block-name}:nth-child(#{$child})');
+    $adjacent-clone-selector: unquote(
+      '.#{$block-name}--isCloned ~ .#{$block-name}:nth-child(#{$child + 1})'
+    );
 
     $selector-chain: append($selector-chain, $child-selector, comma);
     $selector-chain: append($selector-chain, $adjacent-clone-selector, comma);

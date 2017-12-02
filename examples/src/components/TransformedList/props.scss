@@ -1,0 +1,22 @@
+////
+/// Components
+/// TransformedList props
+////
+
+$transformed-list-block-name: unquote('TransformedListItem');
+
+$transformed-item-count: 4;
+$transformed-item-top-increment: get-spacing(loose);
+
+$transformed-item-width: 42rem;
+$transformed-item-height: 60rem;
+
+$transformed-list-height: (
+  $transformed-item-width - (
+    ($transformed-item-top-increment / 2) * ($transformed-item-count - 1)
+  )
+);
+
+$transformed-item-top-offset: (
+  ($transformed-item-width / $transformed-item-count) + ($transformed-item-top-increment / 2)
+);

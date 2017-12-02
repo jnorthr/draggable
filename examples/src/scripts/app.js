@@ -3,6 +3,7 @@ import MobileNav from '../components/MobileNav';
 // import Home from '../content/Home';
 import BasicDragging from '../content/Draggable/BasicDragging';
 import SimpleList from '../content/Sortable/SimpleList';
+import Transformed from '../content/Sortable/Transformed';
 import MultipleContainers from '../content/Sortable/MultipleContainers';
 import FloatedLayout from '../content/Swappable/FloatedLayout';
 import GridLayout from '../content/Swappable/GridLayout';
@@ -18,6 +19,7 @@ if (navActivator) {
 // Home();
 BasicDragging();
 SimpleList();
+Transformed();
 MultipleContainers();
 FloatedLayout();
 SwapAnimation();

@@ -1,0 +1,11 @@
+////
+/// Content
+/// Transformed
+////
+
+// @import '../../shared/mixins';
+@import '../../../components/TransformedList/props';
+
+.Transformed {
+  // @include draggable-source-layout($transformed-list-block-name, 1, 2) {}
+}

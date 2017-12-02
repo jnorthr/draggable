@@ -1,0 +1,14 @@
+{% import '../../../components/TransformedList/TransformedListItem.html' as TransformedListItem %}
+
+{% macro render(id) %}
+  <section id="{{ id }}" class="{{ id }}">
+    <article class="TransformedListWrapper">
+      <ul class="TransformedList">
+        {{ TransformedListItem.render('one',   {index: 1, draggable: true}) }}
+        {{ TransformedListItem.render('two',   {index: 2, draggable: true}) }}
+        {{ TransformedListItem.render('three', {index: 3, draggable: true}) }}
+        {{ TransformedListItem.render('four',  {index: 4, draggable: true}) }}
+      </ul>
+    </article>
+  </section>
+{% endmacro %}

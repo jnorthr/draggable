@@ -1,0 +1,133 @@
+////
+/// Components
+/// TransformedList
+////
+
+@import '../../styles/utilities/layout';
+@import './props';
+
+// .TransformedListWrapper {}
+
+.TransformedList {
+  @include centered-width($transformed-item-width);
+  position: relative;
+  height: $transformed-list-height;
+}
+
+.TransformedListItem {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: $transformed-item-height;
+
+  color: white;
+  background-color: get-color(coal, dark);
+
+  border: get-border();
+  border-top-width: 1.6rem;
+  border-color: get-color(coal, dark);
+
+  transform: perspective(90rem) rotateX(60deg);
+  backface-visibility: hidden;
+
+  @media screen and (min-width: get-breakpoint(tablet)) {
+    // border: get-border(thick);
+    // border-width: 1.6rem;
+    border-color: get-color(coal, dark);
+  }
+
+  .Heading {
+
+  }
+}
+
+///
+/// Draggable layout
+.TransformedListItem:nth-child(1n+2)::before,
+.TransformedListItem--isCloned:first-child + .TransformedListItem {
+  content: '';
+  position: absolute;
+  right: -0.8rem;
+  bottom: $transformed-item-top-increment / 2;
+  left: -0.8rem;
+  display: block;
+  height: $transformed-item-top-increment;
+  background-color: get-color(coal, dark);
+}
+
+.TransformedListItem {
+  $adjusted-top-offset: -$transformed-item-top-offset;
+
+  @for $i from 1 through $transformed-item-count {
+    // &.TransformedListItem--isCloned ~ .TransformedListItem:nth-child(#{$i + 1})
+    &:nth-child(#{$i}) {
+      z-index: ($transformed-item-count + 1) - $i;
+      top: $adjusted-top-offset;
+    }
+
+    $adjusted-top-offset: $adjusted-top-offset + $transformed-item-top-increment;
+  }
+}
+
+///
+/// Draggable Items
+.TransformedListItem--isDraggable {
+  cursor: get-cursor(drag);
+
+  color: get-color(coal, dark);
+  background-color: white;
+  border-color: currentColor;
+  transition:
+    color get-duration(fast) get-easing(),
+    background-color get-duration(fast) get-easing(),
+    border-color get-duration(fast) get-easing(),
+    transform get-duration() get-easing(bungie);
+
+  @media screen and (min-width: get-breakpoint(tablet)) {
+    border-color: currentColor;
+  }
+
+  // @include halftone-bg;
+
+
+  // interaction
+  &:focus,
+  &:hover {
+    color: get-color(brand, blue);
+    border-color: currentColor;
+  }
+
+  &.draggable-source--is-dragging {
+    color: get-color(brand, blue);
+
+    // @include halftone-bg-animated;
+  }
+
+/*
+  &.draggable-source--placed .BlockContent {
+    &::before {
+      @include position-cover;
+      content: '';
+      display: block;
+      background-color: get-color(brand, blue);
+      animation: test get-duration() get-easing() both;
+    }
+  }
+*/
+
+  &.draggable-mirror {
+    z-index: get-z-index(overlay);
+    color: white;
+    background-color: get-color(brand, blue);
+    border-color: get-color(brand, blue);
+    transform: scale(1.025);
+
+    &::before {
+      content: none;
+    }
+  }
+}

@@ -8,4 +8,5 @@ $border-size-unit: 0.8rem;
 $examples-border-data: (
   thin: ($border-size-unit * 0.75) solid currentColor,
   base: $border-size-unit solid currentColor,
+  thick: ($border-size-unit * 2) solid currentColor,
 );

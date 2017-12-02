@@ -42,11 +42,14 @@
 @import '../components/StackedList/StackedList';
 @import '../components/StackedList/variants';
 
+@import '../components/TransformedList/TransformedList';
+
 ///
 /// Example content
 @import '../content/Home/Home';
 @import '../content/Draggable/BasicDragging/BasicDragging';
 @import '../content/Sortable/SimpleList/SimpleList';
+@import '../content/Sortable/Transformed/Transformed';
 @import '../content/Sortable/MultipleContainers/MultipleContainers';
 @import '../content/Swappable/FloatedLayout/FloatedLayout';
 @import '../content/Swappable/GridLayout/GridLayout';
