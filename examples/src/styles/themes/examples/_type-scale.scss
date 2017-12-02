@@ -16,6 +16,14 @@ $examples-type-scale-data: (
     tablet: 2.4rem,
     desktop: 2.8rem,
   ),
+  transformed: (
+    base: 7.2rem,
+    tablet: 12rem,
+    weight: 700,
+    leading: 1,
+    tracking: -0.01em,
+    margin: 0.5em,
+  ),
   jumbo: (
     base: 5.6rem,
     tablet: 8.2rem,

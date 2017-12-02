@@ -8,6 +8,8 @@
   {% set tabIndex = 'tabindex="1"' if options.draggable %}
 
   <li class="{{ classes }}" {{ tabIndex | safe }}>
-    <h4 class="Heading Heading--sizeJumbo Heading--noSelect">{{ heading }}</h4>
+    <div class="TransformedListContent">
+      <h4 class="Heading Heading--noSelect TransformedListHeading">{{ heading }}</h4>
+    </div>
   </li>
 {% endmacro %}

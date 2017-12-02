@@ -4,19 +4,89 @@
 ////
 
 $transformed-list-block-name: unquote('TransformedListItem');
-
 $transformed-item-count: 4;
-$transformed-item-top-increment: get-spacing(loose);
 
-$transformed-item-width: 42rem;
-$transformed-item-height: 60rem;
+///
+/// Size calc functions
 
-$transformed-list-height: (
-  $transformed-item-width - (
-    ($transformed-item-top-increment / 2) * ($transformed-item-count - 1)
-  )
+@function transformed-list-height($width, $spacing) {
+  @return $width - (
+    ($spacing / 2) * ($transformed-item-count - 1)
+  );
+}
+
+///
+/// Style prop maps
+
+$transformed-list-item: (
+  spacing: (
+    base: get-spacing(),
+    tablet: get-spacing(loose),
+  ),
+  width: (
+    base: 24rem,
+    tablet: 42rem,
+  ),
+  height: (
+    base: 38rem,
+    tablet: 58rem,
+  ),
 );
 
-$transformed-item-top-offset: (
-  ($transformed-item-width / $transformed-item-count) + ($transformed-item-top-increment / 2)
+@function transformed-list-item($group: $threads-default-value, $variant: $threads-default-value) {
+  @return threads-value-get($transformed-list-item, $group, $variant);
+}
+
+$transformed-shadow: (
+  bottom: (
+    base: transformed-list-item(spacing) / 2,
+    tablet: transformed-list-item(spacing, tablet) / 2,
+  ),
+  height: (
+    base: transformed-list-item(spacing),
+    tablet: transformed-list-item(spacing, tablet),
+  ),
+  offset: (
+    base: 0.8rem,
+  ),
 );
+
+@function transformed-shadow($group: $threads-default-value, $variant: $threads-default-value) {
+  @return threads-value-get($transformed-shadow, $group, $variant);
+}
+
+$transformed-list: (
+  height: (
+    base: transformed-list-height(
+      transformed-list-item(width),
+      transformed-list-item(spacing)
+    ),
+    tablet: transformed-list-height(
+      transformed-list-item(width, tablet),
+      transformed-list-item(spacing, tablet)
+    ),
+  ),
+);
+
+@function transformed-list($group: $threads-default-value, $variant: $threads-default-value) {
+  @return threads-value-get($transformed-list, $group, $variant);
+}
+
+///
+/// Mixins
+
+@mixin transformed-item-offset($breakpoint: $threads-default-value) {
+  $adjusted-top-offset: -(
+    (transformed-list-item(width, $breakpoint) / $transformed-item-count) +
+    (transformed-list-item(spacing, $breakpoint) / 2)
+  );
+
+  @for $i from 1 through $transformed-item-count {
+    // &.TransformedListItem--isCloned ~ .TransformedListItem:nth-child(#{$i + 1})
+    &:nth-child(#{$i}) {
+      top: $adjusted-top-offset;
+    }
+
+    $adjusted-top-offset: $adjusted-top-offset + transformed-list-item(spacing, $breakpoint);
+  }
+}
