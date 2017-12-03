@@ -26,6 +26,7 @@
 .Heading--noSelect {
   // prevent text selection
   pointer-events: none;
+  user-select: none;
 }
 
 ///

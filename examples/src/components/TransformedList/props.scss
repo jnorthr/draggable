@@ -9,8 +9,8 @@ $transformed-item-count: 4;
 ///
 /// Size calc functions
 
-@function transformed-list-height($width, $spacing) {
-  @return $width - (
+@function transformed-list-height($height, $spacing) {
+  @return $height - (
     ($spacing / 2) * ($transformed-item-count - 1)
   );
 }
@@ -31,6 +31,7 @@ $transformed-list-item: (
     base: 38rem,
     tablet: 58rem,
   ),
+  transform: perspective(90rem) rotateX(60deg),
 );
 
 @function transformed-list-item($group: $threads-default-value, $variant: $threads-default-value) {
@@ -58,11 +59,11 @@ $transformed-shadow: (
 $transformed-list: (
   height: (
     base: transformed-list-height(
-      transformed-list-item(width),
+      transformed-list-item(height),
       transformed-list-item(spacing)
     ),
     tablet: transformed-list-height(
-      transformed-list-item(width, tablet),
+      transformed-list-item(height, tablet),
       transformed-list-item(spacing, tablet)
     ),
   ),
@@ -82,8 +83,8 @@ $transformed-list: (
   );
 
   @for $i from 1 through $transformed-item-count {
-    // &.TransformedListItem--isCloned ~ .TransformedListItem:nth-child(#{$i + 1})
-    &:nth-child(#{$i}) {
+    &:nth-child(#{$i}),
+    &.TransformedListItem--isCloned ~ .TransformedListItem:nth-child(#{$i + 1}) {
       top: $adjusted-top-offset;
     }
 

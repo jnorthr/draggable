@@ -15,7 +15,7 @@
 }
 
 .StackedListHeader {
-  padding: stacked-list-header(padding-top) get-spacing(tighter) stacked-list-header(padding-bottom);
+  padding: stacked-list-header(padding-top) (get-spacing(tighter) + 0.8rem) stacked-list-header(padding-bottom);
   min-height: stacked-list-item();
   background-color: get-color(coal, dark);
 
@@ -91,7 +91,7 @@
     margin-left: get-spacing(tight);
   }
 
-  @include halftone-bg('after');
+  @include halftone-bg(after);
 
   &::before {
     content: '';

@@ -291,7 +291,7 @@
       color: get-color(brand, blue);
       border-color: currentColor;
 
-      @include halftone-bg-animated('after');
+      @include halftone-bg-animated(after);
     }
 
     + .StackedListItem,

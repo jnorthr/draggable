@@ -9,14 +9,14 @@
 // .TransformedListWrapper {}
 
 .TransformedList {
-  @include centered-width(
-    transformed-list-item(width)
-  );
   position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  width: transformed-list-item(width);
   height: transformed-list(height);
 
   @media screen and (min-width: get-breakpoint(tablet)) {
-    max-width: transformed-list-item(width, tablet);
+    width: transformed-list-item(width, tablet);
     height: transformed-list(height, tablet);
   }
 }
@@ -35,15 +35,12 @@
   text-align: center;
   width: 100%;
   height: transformed-list-item(height);
-
   color: white;
   background-color: get-color(coal, dark);
-
   border: get-border();
   border-top-width: 1.6rem;
   border-color: get-color(coal, dark);
-
-  transform: perspective(90rem) rotateX(60deg);
+  transform: transformed-list-item(transform);
   backface-visibility: hidden;
 
   @media screen and (min-width: get-breakpoint(tablet)) {
@@ -67,9 +64,8 @@
 
 ///
 /// Draggable layout
-// .TransformedListItem--isCloned:first-child + .TransformedListItem::before
 .TransformedListItem:nth-child(1n+2) {
-  .TransformedListContent::before {
+  .TransformedListContent::after {
     content: '';
     position: absolute;
     right: -#{transformed-shadow(offset)};
@@ -78,7 +74,7 @@
     display: block;
     height: transformed-shadow(height);
     background-color: get-color(coal, dark);
-    transition: transform get-duration(fast) get-easing();
+    transition: transform get-duration() get-easing();
 
     @media screen and (min-width: get-breakpoint(tablet)) {
       bottom: transformed-shadow(bottom, tablet);
@@ -87,9 +83,14 @@
   }
 }
 
+.TransformedListItem--isCloned:first-child + .TransformedListItem {
+  .TransformedListContent::after {
+    content: none;
+  }
+}
+
 .TransformedListItem {
   @for $i from 1 through $transformed-item-count {
-    // &.TransformedListItem--isCloned ~ .TransformedListItem:nth-child(#{$i + 1})
     &:nth-child(#{$i}) {
       z-index: ($transformed-item-count + 1) - $i;
     }
@@ -115,13 +116,13 @@
       color get-duration(fast) get-easing(),
       background-color get-duration(fast) get-easing(),
       border-color get-duration(fast) get-easing(),
-      transform get-duration() get-easing(bungie);
+      transform get-duration() get-easing();
 
     @media screen and (min-width: get-breakpoint(tablet)) {
       border-color: currentColor;
     }
 
-    // @include halftone-bg;
+    @include halftone-bg;
   }
 
   // interaction
@@ -130,9 +131,9 @@
     .TransformedListContent {
       color: get-color(brand, blue);
       border-color: currentColor;
-      transform: perspective(90rem) rotateX(60deg) translateY(get-spacing(tightest));
+      transform: transformed-list-item(transform) translateY(get-spacing(tightest));
 
-      &::before {
+      &::after {
         transform: translateY(
           -(get-spacing(tightest))
         );
@@ -144,7 +145,7 @@
     .TransformedListContent {
       color: get-color(brand, blue);
 
-      // @include halftone-bg-animated;
+      @include halftone-bg-animated;
     }
   }
 
@@ -167,9 +168,9 @@
       color: white;
       background-color: get-color(brand, blue);
       border-color: get-color(brand, blue);
-      transform: perspective(90rem) rotateX(60deg) scale(1.05);
+      transform: transformed-list-item(transform) scale(1.05);
 
-      &::before {
+      &::after {
         content: none;
       }
     }
